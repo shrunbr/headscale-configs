@@ -11,6 +11,8 @@ The stack...
 
 I am assuming that you already have Authelia up and running in your environment. If you don't go [check their docs](https://www.authelia.com/) to learn more. I also am assuming you have Docker installed on a VPS with a public IP, if you don't here are the [Debian docs](https://docs.docker.com/engine/install/debian/) (I use Debian, you'll have to find the docs for your OS if it's not Debian).
 
+If you don't have a VPS with a public IP check out [BuyVM](https://www.buyvm.net) (*#notasponsor*), I'm in no way affilated with them, I'm just a customer who likes their service.
+
 ## Authelia
 
 There is one file in the repo associated with Authelia and that is [authelia-configuration.yaml](/authelia-configuration.yaml).
