@@ -3,13 +3,13 @@
 This repository contains configurations which are more or less ready to go for you to use.
 
 The stack...
-* Docker
-* Headscale
-* Headplane (Admin UI)
-* Caddy (Reverse Proxy)
-* Authelia (OIDC Authentication)
+* [Docker](https://www.docker.com)
+* [Headscale](https://headscale.net/)
+* [Headplane (Admin UI)](https://github.com/tale/headplane/)
+* [Caddy (Reverse Proxy)](https://caddyserver.com/)
+* [Authelia (OIDC Authentication)](https://www.authelia.com/)
 
-I am assuming that you already have Authelia up and running in your environment. If you don't go [check their docs](https://www.authelia.com/) to learn more. I also am assuming you have Docker installed on a VPS with a public IP, if you don't here are the [Debian docs](https://docs.docker.com/engine/install/debian/) (I use Debian, you'll have to find the docs for your OS if it's not Debian).
+I am assuming that you already have Authelia up and running in your environment. If you don't go [check their docs](https://www.authelia.com/overview/prologue/introduction/) to learn more. I also am assuming you have Docker installed on a VPS with a public IP, if you don't here are the [Debian docs](https://docs.docker.com/engine/install/debian/) (I use Debian, you'll have to find the docs for your OS if it's not Debian).
 
 If you don't have a VPS with a public IP check out [BuyVM](https://www.buyvm.net) (*#notasponsor*), I'm in no way affilated with them, I'm just a customer who likes their service.
 
