@@ -1,0 +1,42 @@
+identity_providers:
+  oidc:
+    authorization_policies:
+      headplane:
+        default_policy: 'deny'
+        rules:
+          - policy: 'two_factor'
+            subject: 'group:headplane_admins'
+      headscale:
+        default_policy: 'deny'
+        rules:
+          - policy: 'two_factor'
+            subject: 'group:headscale_users'
+
+
+- client_id: 'my-super-cool-client-id-for-headplane'
+  client_name: 'Headplane'
+  public: false
+  authorization_policy: 'headplane'
+  redirect_uris:
+      - 'https://hs.example.com/oidc/callback'
+      - 'https://hs.example.com/admin/oidc/callback'
+  scopes:
+      - 'openid'
+      - 'profile'
+      - 'email'
+  userinfo_signed_response_alg: 'none'
+  client_secret: 'my-super-cool-client-secret-digest-for-headplane'
+- client_id: 'my-super-cool-client-id-for-headscale'
+  client_name: 'Headscale'
+  public: false
+  authorization_policy: 'headscale'
+  redirect_uris:
+      - 'https://hs.example.com/oidc/callback'
+      - 'https://hs.example.com/admin/oidc/callback'
+  scopes:
+      - 'openid'
+      - 'profile'
+      - 'groups'
+      - 'email'
+  userinfo_signed_response_alg: 'none'
+  client_secret: 'my-super-cool-client-secret-digest-for-headscale'

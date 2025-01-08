@@ -1,0 +1,20 @@
+networks:
+  caddy:
+    external: true
+
+services:
+  caddy:
+    container_name: caddy
+    image: caddy:2.8.4-alpine
+    restart: unless-stopped
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    networks:
+      - caddy
+    ports:
+      - "443:443"
+      - "80:80"
+
+volumes:
+  caddy_data:

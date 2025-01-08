@@ -1,0 +1,48 @@
+networks:
+  caddy:
+    external: true
+
+services:
+  headscale:
+    container_name: headscale
+    image: headscale/headscale:v0.23
+    restart: unless-stopped
+    expose:
+      - 8080
+      - 9090
+    networks:
+      - caddy
+    volumes:
+      - ./config:/etc/headscale
+      - ./data:/var/lib/headscale
+    environment:
+      - TZ=America/Chicago
+    command: serve
+
+  headplane:
+    container_name: headplane
+    image: ghcr.io/tale/headplane:latest
+    restart: unless-stopped
+    volumes:
+      - ./config:/etc/headscale
+      - ./data:/var/lib/headscale
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    expose:
+      - 3000
+    networks:
+      - caddy
+    environment:
+      COOKIE_SECRET: 'mewantcookiesnomnomnomnom' # generated with "openssl rand -hex 32"
+      HEADSCALE_URL: 'https://hs.example.com'
+      CONFIG_FILE: '/etc/headscale/config.yaml'
+      #ACL: '/etc/headscale/acl.hujson'
+      HEADSCALE_INTEGRATION: 'docker'
+      HEADSCALE_CONTAINER: 'headscale'
+      DISABLE_API_KEY_LOGIN: 'true'
+      HOST: '0.0.0.0'
+      PORT: '3000'
+      TZ: 'America/Chicago'
+      ROOT_API_KEY: 'apikeysaresuperc00l' # see readme for info
+      OIDC_ISSUER: 'https://auth.example.com'
+      OIDC_CLIENT_ID: 'my-super-cool-client-id-for-headplane'
+      OIDC_CLIENT_SECRET: 'my-super-cool-client-secret-password-for-headplane'

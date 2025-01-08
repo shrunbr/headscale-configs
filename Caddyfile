@@ -1,0 +1,14 @@
+hs.example.com {
+        reverse_proxy * headscale:8080
+
+        reverse_proxy /admin* headplane:3000
+        log {
+            output file /data/hs.example.com.log {
+                      roll_size 100MiB
+                      roll_keep 5
+                      roll_keep_for 100d
+            }
+            format json
+            level INFO
+     }
+}
